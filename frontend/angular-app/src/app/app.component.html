@@ -1,13 +1,3 @@
-<table>
-  <thead>
-    <tr>
-      <th>Név</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of data">
-      <td>{{ item.userName }}</td>
-    </tr>
-  </tbody>
-</table>
-<button id="testBtn" (click)="onClick()">Click</button>
+<main>
+  <router-outlet></router-outlet>
+</main>
