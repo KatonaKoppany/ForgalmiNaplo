@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from './data.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,27 +6,5 @@ import { DataService } from './data.service';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  constructor(private dataService: DataService) {}
-  data: any[] = [];
-  val: any = {
-    userName: 'teszt2diak',
-  };
-
-  onClick() {
-    this.dataService.selectAll('student').subscribe((res) => {
-      console.log(res);
-    });
-
-    this.dataService.select('student', 'id', '1').subscribe((res) => {
-      console.log(res);
-    });
-
-    this.dataService.update('student', '2', this.val).subscribe(() => {
-      this.dataService.select('student', 'id', '2').subscribe((res) => {
-        this.data = res;
-        console.log(this.data);
-      });
-    });
-  }
-  title = 'angular-app';
+  title = 'ForgamiNapló';
 }

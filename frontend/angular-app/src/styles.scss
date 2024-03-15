@@ -10,3 +10,26 @@ body {
   margin: 0;
   font-family: "Open Sans", sans-serif;
 }
+
+.alertplaceholder {
+  margin-top: 30px;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.alert {
+  width: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+
+.alert-icon {
+  font-size: 30px;
+  margin-right: 10px;
+}
