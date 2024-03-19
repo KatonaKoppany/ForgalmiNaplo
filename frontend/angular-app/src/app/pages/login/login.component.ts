@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../../data.service';
+import { AuthService } from '../../shared/auth.service';
 import * as CryptoJS from 'crypto-js';
 import { AlertService } from '../../alert.service';
 
@@ -12,7 +13,8 @@ import { AlertService } from '../../alert.service';
 export class LoginComponent {
   constructor(
     private dataService: DataService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authService: AuthService
   ) {}
   loginFormData = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -38,14 +40,14 @@ export class LoginComponent {
     const password = this.loginFormData.get('password')?.value;
     const hashedPassword = CryptoJS.SHA1(<string>password).toString();
 
-    console.log(hashedPassword);
     this.dataService
       .loginCheck('admin', email, hashedPassword)
       .subscribe((res) => {
         if (res.length > 0) {
-          console.log(res);
+          this.authService.logIn();
+          this.alertService.alert('Üdvözöljük!', 'success', 'check_circle');
         } else {
-          this.alertService.alert('Hibás adatok!', 'warning', 'warning');
+          this.alertService.alert('Hibás adatok!', 'danger', 'warning');
           this.alert = true;
         }
       });

@@ -1,0 +1,33 @@
+.logo {
+  width: 60px;
+  height: 60px;
+}
+
+nav {
+  padding: 0;
+  margin: 0;
+  background-color: #1e87c2;
+}
+
+.navbar-collapse {
+  justify-content: end;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+
+li {
+  transition: 0.4s ease;
+}
+
+li:hover {
+  background-color: #174761;
+  border-radius: 3px;
+}
+
+li:hover > a {
+  color: whitesmoke;
+}

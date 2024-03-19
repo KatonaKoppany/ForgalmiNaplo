@@ -12,7 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MenuComponent } from './shared/menu/menu.component';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { LoginComponent } from './pages/login/login.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
@@ -34,7 +33,6 @@ const routes: Routes = [
     AppRoutingModule,
     HttpClientModule,
     MatIconModule,
-    MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
