@@ -1,6 +1,6 @@
-<!--*ngIf="authService.isLoggedIn"-->
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg" *ngIf="authService.isLoggedIn">
   <div class="container-fluid">
+    <p>{{ authService.loggedUser }}</p>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav">
         <li class="nav-item">

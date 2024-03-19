@@ -44,11 +44,59 @@ export class LoginComponent {
       .loginCheck('admin', email, hashedPassword)
       .subscribe((res) => {
         if (res.length > 0) {
-          this.authService.logIn();
+          sessionStorage.setItem('userName', res[0].userName);
+          sessionStorage.setItem('phoneNum', res[0].phoneNum);
+          sessionStorage.setItem('userEmail', res[0].email);
+          sessionStorage.setItem('permission', res[0].permission);
+          sessionStorage.setItem('schoolID', res[0].schoolID);
+
           this.alertService.alert('Üdvözöljük!', 'success', 'check_circle');
+          this.authService.logIn();
         } else {
-          this.alertService.alert('Hibás adatok!', 'danger', 'warning');
-          this.alert = true;
+          this.dataService
+            .loginCheck('teacher', email, hashedPassword)
+            .subscribe((res) => {
+              if (res.length > 0) {
+                sessionStorage.setItem('userName', res[0].userName);
+                sessionStorage.setItem('phoneNum', res[0].phoneNum);
+                sessionStorage.setItem('userEmail', res[0].email);
+                sessionStorage.setItem('permission', res[0].permission);
+                sessionStorage.setItem('schoolID', res[0].schoolID);
+
+                this.alertService.alert(
+                  'Üdvözöljük!',
+                  'success',
+                  'check_circle'
+                );
+                this.authService.logIn();
+              } else {
+                this.dataService
+                  .loginCheck('student', email, hashedPassword)
+                  .subscribe((res) => {
+                    if (res.length > 0) {
+                      sessionStorage.setItem('userName', res[0].userName);
+                      sessionStorage.setItem('phoneNum', res[0].phoneNum);
+                      sessionStorage.setItem('userEmail', res[0].email);
+                      sessionStorage.setItem('permission', res[0].permission);
+                      sessionStorage.setItem('teacherID', res[0].teacherID);
+
+                      this.alertService.alert(
+                        'Üdvözöljük!',
+                        'success',
+                        'check_circle'
+                      );
+                      this.authService.logIn();
+                    } else {
+                      this.alertService.alert(
+                        'Hibás adatok!',
+                        'danger',
+                        'warning'
+                      );
+                      this.alert = true;
+                    }
+                  });
+              }
+            });
         }
       });
   }
