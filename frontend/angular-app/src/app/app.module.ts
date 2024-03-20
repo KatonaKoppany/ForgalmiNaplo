@@ -20,14 +20,21 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDividerModule } from '@angular/material/divider';
+import { TeacherListComponent } from './pages/teacher-list/teacher-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'teacher-list', component: TeacherListComponent },
 ];
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    MenuComponent,
+    LoginComponent,
+    TeacherListComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
