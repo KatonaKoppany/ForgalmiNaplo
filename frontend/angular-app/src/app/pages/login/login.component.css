@@ -17,14 +17,9 @@ form {
   box-shadow: 5px 10px;
 }
 
-@media (max-width: 991.98px) {
-  .nav-link {
-    text-indent: -9999px; /* Szöveg ki tolása a látótéren kívülre */
-  }
-}
-
-@media (min-width: 992px) {
-  .nav-link {
-    text-indent: 0; /* Visszaállítjuk a szöveget */
-  }
+img {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  margin-bottom: 20px;
 }

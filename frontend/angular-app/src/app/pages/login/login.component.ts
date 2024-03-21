@@ -4,6 +4,7 @@ import { DataService } from '../../data.service';
 import { AuthService } from '../../shared/auth.service';
 import * as CryptoJS from 'crypto-js';
 import { AlertService } from '../../alert.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,10 @@ export class LoginComponent {
   constructor(
     private dataService: DataService,
     private alertService: AlertService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) {}
+
   loginFormData = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl(''),
@@ -49,9 +52,10 @@ export class LoginComponent {
           sessionStorage.setItem('userEmail', res[0].email);
           sessionStorage.setItem('permission', res[0].permission);
           sessionStorage.setItem('schoolID', res[0].schoolID);
-
+          sessionStorage.setItem('isLoggedIn', 'true');
           this.alertService.alert('Üdvözöljük!', 'success', 'check_circle');
           this.authService.logIn();
+          this.router.navigate(['/teacher-list']);
         } else {
           this.dataService
             .loginCheck('teacher', email, hashedPassword)
@@ -62,13 +66,14 @@ export class LoginComponent {
                 sessionStorage.setItem('userEmail', res[0].email);
                 sessionStorage.setItem('permission', res[0].permission);
                 sessionStorage.setItem('schoolID', res[0].schoolID);
-
+                sessionStorage.setItem('isLoggedIn', 'true');
                 this.alertService.alert(
                   'Üdvözöljük!',
                   'success',
                   'check_circle'
                 );
                 this.authService.logIn();
+                this.router.navigate(['/calendar']);
               } else {
                 this.dataService
                   .loginCheck('student', email, hashedPassword)
@@ -79,13 +84,14 @@ export class LoginComponent {
                       sessionStorage.setItem('userEmail', res[0].email);
                       sessionStorage.setItem('permission', res[0].permission);
                       sessionStorage.setItem('teacherID', res[0].teacherID);
-
+                      sessionStorage.setItem('isLoggedIn', 'true');
                       this.alertService.alert(
                         'Üdvözöljük!',
                         'success',
                         'check_circle'
                       );
                       this.authService.logIn();
+                      this.router.navigate(['/calendar']);
                     } else {
                       this.alertService.alert(
                         'Hibás adatok!',
