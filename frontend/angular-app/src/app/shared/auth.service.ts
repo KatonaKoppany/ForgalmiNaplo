@@ -4,18 +4,22 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthService {
-  isLoggedIn: boolean = false;
-  loggedUser: string = 'asd';
-
   constructor() {}
 
+  isLoggedIn(): boolean {
+    if (typeof sessionStorage !== 'undefined') {
+      if (sessionStorage.getItem('isLoggedIn') === 'true') {
+        return true;
+      }
+    }
+    return false;
+  }
+
   logIn(): void {
-    this.loggedUser = <string>sessionStorage.getItem('userName');
-    this.isLoggedIn = true;
+    sessionStorage.setItem('isLoggedIn', 'true');
   }
 
   logOut(): void {
     sessionStorage.clear();
-    this.isLoggedIn = false;
   }
 }
