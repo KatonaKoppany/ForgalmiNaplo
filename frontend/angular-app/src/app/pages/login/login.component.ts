@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { DataService } from '../../data.service';
-import { AuthService } from '../../shared/auth.service';
+import { DataService } from '../../services/data.service';
+import { AuthService } from '../../services/auth.service';
 import * as CryptoJS from 'crypto-js';
 import { AlertService } from '../../alert.service';
 import { Router } from '@angular/router';
