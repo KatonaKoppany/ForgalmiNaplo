@@ -1,12 +1,10 @@
-.logo {
-  width: 60px;
-  height: 60px;
-}
-
 nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
   padding: 0;
   margin: 0;
-  background-color: #1e87c2;
+  background-color: #2a7bc4;
 }
 
 .navbar-collapse {
