@@ -23,11 +23,13 @@ import { MatDividerModule } from '@angular/material/divider';
 import { TeacherListComponent } from './pages/teacher-list/teacher-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { StudentListComponent } from './pages/student-list/student-list.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'teacher-list', component: TeacherListComponent },
+  { path: 'student-list', component: StudentListComponent },
 ];
 
 @NgModule({
@@ -36,6 +38,7 @@ const routes: Routes = [
     MenuComponent,
     LoginComponent,
     TeacherListComponent,
+    StudentListComponent,
   ],
   imports: [
     BrowserModule,
