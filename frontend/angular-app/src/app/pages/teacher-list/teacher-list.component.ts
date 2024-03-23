@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -10,7 +10,7 @@ import { AlertService } from '../../alert.service';
   templateUrl: './teacher-list.component.html',
   styleUrl: './teacher-list.component.css',
 })
-export class TeacherListComponent implements OnInit {
+export class TeacherListComponent implements AfterViewInit {
   constructor(
     private dataService: DataService,
     private alertService: AlertService
@@ -29,7 +29,7 @@ export class TeacherListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.getTeacherList();
   }
 
@@ -48,7 +48,5 @@ export class TeacherListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-
-    console.log(event);
   }
 }
